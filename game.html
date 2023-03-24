@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link href="./css/index.css" rel="stylesheet" type="text/css"/>
+    <script src="./js/back.js" type="text/javascript"></script>
+    <script src="./js/all.js" type="text/javascript"></script>
+    <script src="./js/game.js" type="text/javascript"></script>
+    <script src="./js/gameCanvas.js" type="text/javascript"></script>
+    <script src="./js/midigame.js" type="text/javascript"></script>
+    <!-- polyfill -->
+	<script src="./midijs/Base64.js" type="text/javascript"></script>
+	<script src="./midijs/Base64binary.js" type="text/javascript"></script>
+    <!--
+	<script src="./midijs/WebAudioAPI.js" type="text/javascript"></script>
+    <script src="./midijs/WebMIDIAPI.js" type="text/javascript"></script>
+    -->
+    <!-- jasmid package -->
+	<script src="./midijs/stream.js"></script>
+	<script src="./midijs/midifile.js"></script>
+	<script src="./midijs/replayer.js"></script>
+	<!-- midi.js package -->
+	<script src="./midijs/audioDetect.js" type="text/javascript"></script>
+	<script src="./midijs/gm.js" type="text/javascript"></script>
+	<script src="./midijs/loader.js" type="text/javascript"></script>
+	<script src="./midijs/plugin.audiotag.js" type="text/javascript"></script>
+	<script src="./midijs/plugin.webaudio.js" type="text/javascript"></script>
+	<script src="./midijs/plugin.webmidi.js" type="text/javascript"></script>
+    <script src="./midijs/player.js" type="text/javascript"></script>
+    <script src="./midijs/synesthesia.js" type="text/javascript"></script>
+	<!-- utils -->
+	<script src="./midijs/dom_request_xhr.js" type="text/javascript"></script>
+	<script src="./midijs/dom_request_script.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="head" id="head">
+        <div class="main-header main claerfix bor-bottom">
+            <div class="logo float-left">
+                <img class="logo-img" src="./img/logo.png" alt="">
+            </div>
+            <div class="main-header-choice">
+                <ul id="main-header-list" class="main-header-list claerfix">
+                </ul>
+            </div>
+            <div class="search float-left claerfix">
+                <input class="search-input-input" type="text" placeholder="搜索音乐、MV、歌单、用户">
+                <button id="search" class="search-input">
+                    <i class="icon-search"></i>
+                </button>
+            </div>
+            <div class="login float-left">
+                <div class="login-login claerfix">
+                    <div class="login-btn float-left">
+                        <a class="loginin" href="./index.html">登录</a>
+                    </div>
+                    <div class="register-btn float-left">
+                        <a class="register" href="#">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contain game-contain" id="contain">
+        <canvas id="back-canvas" class="game-back-canvas"></canvas>
+        <div class="main-piano-game" id="main-piano-game">
+            <div class="choice claerfix">
+                <div class="song-choice float-left" id="song-choice">
+                    <a href="#" onclick="getJsonSong()">选择乐曲</a>
+                    <ul id="song-choice-lists" class="song-choice-lists"></ul>
+                </div>
+                <div class="game-choice float-left" id="game-choice"></div>
+                <div class="tips-text float-left" id="tips-text"></div>
+                <div class="setting-btn float-right" id="start-setting"><a>设置</a></div>
+            </div>
+            <div class="game-setting">
+                <div class="setting-list float-left" id="setting-list">
+                    <ul class="setting-lists" id="setting-lists">
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-piano">
+                <div class="game-canvas" id="game-canvas">
+                    <canvas class="main-canvas game-canvas-0" id="game-canvas-0"></canvas>
+                    <canvas class="main-canvas game-canvas-1" id="game-canvas-1"></canvas>
+                </div>
+                <div class="game-piano">
+                    <div class="game-keys" id="game-keys">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var ongamechoicenumber = 1;//0为欣赏 1为游戏
+        var mainGame = 0;
+        var mainKeys = 0;
+        //var gamerestop = 0;
+        function playMIDI(){
+            if(MIDI.Player.playing){
+                MIDI.Player.stop();
+                alert("当前乐曲未结束！")
+                return;
+            }
+            //检测支持性
+            var canvas = document.getElementById('game-canvas-0');
+            if (!canvas.getContext){
+                console.log("浏览器不支持canvas");
+            }
+            scores = 0//得分清零
+            MIDI.loadPlugin({
+                soundfontUrl: "./soundfont/",
+                instrument: "acoustic_grand_piano",
+                onprogress: function(state, progress) {
+                    var text = document.getElementById("tips-text");
+                    text.innerHTML="请稍后……";
+                    console.log(progress * 100);
+                },
+                onsuccess: function() {
+                    getArrayData();
+                    var text = document.getElementById("tips-text");
+                    text.innerHTML=scores;
+                    MIDI.setVolume(0, 127);
+                    mainArraytimes = 0;
+                    setTimeout(beginTrans(),2000);
+                    setTimeout(beginGame,3000);
+                }
+            });
+        }
+        function beginGame(){
+            mainKeys = self.setInterval(function(){
+                var data = mainArray[0];
+                if (data.message === 144){
+                    var pianoKey = data.note - 21 + 1;
+                    gamegetnode(pianoKey,data.delay);
+                }
+            },  speed * 1000);
+            mainGame = self.setInterval(function(){
+                var data = mainArray.shift();
+                if (data.message === 144){//128 is noteOff, 144 is noteOn
+                    var pianoKey = data.note - 21 + 1;
+                    createCanvas(pianoKey);
+                    //var now = data.now; //当前播放时间
+                    //var end = data.end; //歌曲结束时间
+                    var channel = data.channel; //正在播放的频道
+                    //var message = data.message; // 128 is noteOff, 144 is noteOn
+                    var note = data.note; //音符编号从21开始
+                    var velocity = data.velocity; //音符速度
+                    var delay = data.delay;
+                    var notelong = data.notelong;
+                    MIDI.noteOn(channel, note, velocity, delay);
+                    //console.log(data.note,data.channel,data.now,data.end,data.message,data.velocity);
+                    MIDI.noteOff(channel, note, delay + notelong);
+                }
+                mainArraytimes++;
+                if(mainArraylength == mainArraytimes){
+                    gameStop();
+                }
+            }, speed * 1000);
+        }
+        function gameStop(){
+            self.clearInterval(mainGame);
+            self.clearInterval(mainKeys);
+        }
+        function pauseMIDI(){
+            gameStop();
+        }
+        function resumeMIDI(){
+            setTimeout(beginTrans(),2000);
+            setTimeout(beginGame,3000);
+        }
+        function stopMIDI(){
+            gameStop();
+        }
+        function replayMIDI(){
+            gameStop();
+            setTimeout(playMIDI,3000)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+    "songs":[
+        {"songsname":"菊次郎的夏天","path":"./midiAudio/菊次郎的夏天.mid"},
+        {"songsname":"梦中的婚礼","path":"./midiAudio/梦中的婚礼.mid"},
+        {"songsname":"夜的钢琴曲五","path":"./midiAudio/夜的钢琴曲五.mid"},
+        {"songsname":"夜曲","path":"./midiAudio/夜曲.mid"},
+        {"songsname":"致爱丽丝","path":"./midiAudio/致爱丽丝.mid"},
+        {"songsname":"G大调弦乐小夜曲-莫扎特","path":"./midiAudio/G大调弦乐小夜曲-莫扎特.mid"},
+        {"songsname":"花海-周杰伦","path":"./midiAudio/花海-周杰伦.mid"},
+        {"songsname":"花开物语","path":"./midiAudio/花开物语.mid"},
+        {"songsname":"Rustles of Spring Op-32 No-3","path":"midi0"},
+        {"songsname":"Arabian Dance","path":"midi1"}
+    ],
+    "gamesongs":[
+        {"songsname":"小星星","path":"gamesong0"},
+        {"songsname":"卡农","path":"gamesong1"}
+    ]
+}

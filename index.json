@@ -1,0 +1,36 @@
+{
+    "setting":[
+        {"settingname":"键盘大小","classname":"board-size","id":"board-size","statenum":"1","settingchoice":"0"},
+        {"settingname":"键盘提示","classname":"keyboard-tip","id":"keyboard-tip","statenum":"1","settingchoice":"1"},
+        {"settingname":"音符注释名称","classname":"note-name","id":"note-name","statenum":"1","settingchoice":"1"},
+        {"settingname":"音符注释（数字）","classname":"note-number-name","id":"note-number-name","statenum":"0","settingchoice":"1"},
+        {"settingname":"隐藏标题","classname":"hide-head","id":"hide-head","statenum":"0","settingchoice":"1"}
+    ],
+    "headlist":[
+        {"name":"Piano","classname":"piano-index","id":"piano-index","state":"0","herf":"./index.html"},
+        {"name":"Piano2","classname":"piano-game","id":"piano-Piano2","state":"0","herf":"./Piano2.html"},
+        {"name":"Game","classname":"piano-game","id":"piano-game","state":"0","herf":"./game.html"},
+        {"name":"openPlan","classname":"piano-open","id":"piano-open","state":"0","herf":"#"}
+    ],
+    "piano2choice":[
+        {"name":"开始","classname":"game-play","id":"game-play","state":"0","onclick":"playMIDI()"},
+        {"name":"暂停","classname":"game-pause","id":"game-pause","state":"0","onclick":"pauseMIDI()"},
+        {"name":"继续","classname":"game-resume","id":"game-resume","state":"0","onclick":"resumeMIDI()"},
+        {"name":"重新开始","classname":"game-replay","id":"game-replay","state":"0","onclick":"replayMIDI()"},
+        {"name":"结束","classname":"game-end","id":"game-end","state":"0","onclick":"stopMIDI()"}
+    ],
+    "gamechoice":[
+        {"name":"开始","classname":"game-play","id":"game-play","state":"0","onclick":"playMIDI()"},
+        {"name":"暂停","classname":"game-pause","id":"game-pause","state":"0","onclick":"pauseMIDI()"},
+        {"name":"继续","classname":"game-resume","id":"game-resume","state":"0","onclick":"resumeMIDI()"},
+        {"name":"重新开始","classname":"game-replay","id":"game-replay","state":"0","onclick":"replayMIDI()"},
+        {"name":"结束","classname":"game-end","id":"game-end","state":"0","onclick":"stopMIDI()"}
+    ],
+    "gameSetting":[
+        {"settingname":"键盘大小","classname":"board-size","id":"board-size","statenum":"1","settingchoice":"0"},
+        {"settingname":"键盘提示","classname":"keyboard-tip","id":"keyboard-tip","statenum":"1","settingchoice":"1"},
+        {"settingname":"音符注释名称","classname":"note-name","id":"note-name","statenum":"1","settingchoice":"1"},
+        {"settingname":"音符注释（数字）","classname":"note-number-name","id":"note-number-name","statenum":"0","settingchoice":"1"},
+        {"settingname":"隐藏标题","classname":"hide-head","id":"hide-head","statenum":"0","settingchoice":"1"}
+    ]
+}
