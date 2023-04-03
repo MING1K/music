@@ -176,8 +176,8 @@ a:hover{
         overflow: hidden;
     }
     .head .main-header .logo .logo-img{
-        width: 100px;
-        margin: 5px 10px 0px 6px;
+        width: 80px;
+        margin: 5px 8px 0px 6px;
     }
     .head .main-header .main-header-choice{
         line-height: 35px;
@@ -186,7 +186,7 @@ a:hover{
     }
     .head .main-header .main-header-choice .main-header-list li a{
         float: left;
-        width: 65px;
+        width: 53px;
         font-size: 14px;
     }
     .head .search{
@@ -407,7 +407,7 @@ a:hover{
         overflow: hidden;
     }
     .contain .main-piano .piano-label .choose-piano .song-name{
-        width: 80px;
+        width: 70px;
         text-align: center;
         line-height: 25px;
         height: 25px;
@@ -440,7 +440,7 @@ a:hover{
     .contain .main-piano .piano-label .choose-piano .control a{
         border: 1px solid #30c478;
         padding: 3px 5px;
-        margin: 0 5px;
+        margin: 0 4px;
     }
     .contain .main-piano .piano-label .setting{
         display: block;
@@ -926,12 +926,12 @@ a:hover{
         background: #8d8c8c13;
     }
     .main-piano-game .choice .song-choice{
-        width: 100px;
+        width: 80px;
         height: 30px;
         line-height: 30px;
         text-align: center;
         margin-top: 5px;
-        margin-left: 10px;
+        margin-left: 5px;
         border: 1px solid #9c9c9c;
     }
     .main-piano-game .choice .song-choice .song-choice-lists{
@@ -949,24 +949,24 @@ a:hover{
         width: auto;
         min-width: auto;
         text-align: left;
-        margin-left: 10px;
+        margin-left: 8px;
         display: block;
     }
     .main-piano-game .choice .game-choice a{
-        padding: 5px 5px 5px 5px;
-        margin: 0 5px;
+        padding: 5px 4px 5px 4px;
+        margin: 0 4px;
         max-width: 60px;
         border: 1px solid #9c9c9c;
     }
     .main-piano-game .choice .setting-btn{
-        width: 100px;
+        width: 70px;
         text-align: right;
-        margin-right: 20px;
+        margin-right: 5px;
         display: inline;
     }
     .main-piano-game .choice .setting-btn a{
-        padding: 5px 10px 5px 10px;
-        margin: 0 10px;
+        padding: 5px 8px 5px 8px;
+        margin: 0 5px;
         max-width: 60px;
         border: 1px solid #9c9c9c;
     }

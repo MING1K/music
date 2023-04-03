@@ -16,12 +16,12 @@
         {"name":"开始","classname":"game-play","id":"game-play","state":"0","onclick":"playMIDI()"},
         {"name":"暂停","classname":"game-pause","id":"game-pause","state":"0","onclick":"pauseMIDI()"},
         {"name":"继续","classname":"game-resume","id":"game-resume","state":"0","onclick":"resumeMIDI()"},
-        {"name":"重新开始","classname":"game-replay","id":"game-replay","state":"0","onclick":"replayMIDI()"},
+        {"name":"重来","classname":"game-replay","id":"game-replay","state":"0","onclick":"replayMIDI()"},
         {"name":"结束","classname":"game-end","id":"game-end","state":"0","onclick":"stopMIDI()"}
     ],
     "gamechoice":[
         {"name":"开始","classname":"game-play","id":"game-play","state":"0","onclick":"playMIDI()"},
-        {"name":"重新开始","classname":"game-replay","id":"game-replay","state":"0","onclick":"replayMIDI()"},
+        {"name":"重来","classname":"game-replay","id":"game-replay","state":"0","onclick":"replayMIDI()"},
         {"name":"结束","classname":"game-end","id":"game-end","state":"0","onclick":"stopMIDI()"}
     ],
     "gameSetting":[
