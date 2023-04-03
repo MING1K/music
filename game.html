@@ -36,7 +36,7 @@
 	<script src="./midijs/dom_request_script.js" type="text/javascript"></script>
 </head>
 <body>
-    <div class="head" id="head">
+    <div class="head game-head" id="head">
         <div class="main-header main claerfix bor-bottom">
             <div class="logo float-left">
                 <img class="logo-img" src="./img/logo.png" alt="">
@@ -63,6 +63,14 @@
             </div>
         </div>
     </div>
+    <div class="game-score">
+        <div class="tips-text" id="tips-text">0</div>
+    </div>
+    <div class="game-state">
+        <div class="game-tips" id="game-tips">
+            tishi
+        </div>
+    </div>
     <div class="contain game-contain" id="contain">
         <canvas id="back-canvas" class="game-back-canvas"></canvas>
         <div class="main-piano-game" id="main-piano-game">
@@ -72,7 +80,7 @@
                     <ul id="song-choice-lists" class="song-choice-lists"></ul>
                 </div>
                 <div class="game-choice float-left" id="game-choice"></div>
-                <div class="tips-text float-left" id="tips-text"></div>
+                <!-- <div class="tips-text float-left" id="tips-text"></div> -->
                 <div class="setting-btn float-right" id="start-setting"><a>设置</a></div>
             </div>
             <div class="game-setting">
@@ -100,8 +108,11 @@
         var ongamechoicenumber = 1;//0为欣赏 1为游戏
         var mainGame = 0;
         var mainKeys = 0;
+        var tip = document.getElementById('game-tips');
+        tip.style.display='none';
         //var gamerestop = 0;
         function playMIDI(){
+            gameStop();
             if(MIDI.Player.playing){
                 MIDI.Player.stop();
                 alert("当前乐曲未结束！")
@@ -127,10 +138,22 @@
                     text.innerHTML=scores;
                     MIDI.setVolume(0, 127);
                     mainArraytimes = 0;
+                    changeTips();
                     setTimeout(beginTrans(),2000);
                     setTimeout(beginGame,3000);
                 }
             });
+        }
+        function changeTips(){
+            var tip = document.getElementById('game-tips');
+            tip.innerHTML='请稍后……';
+            tip.style.display='block';
+            setTimeout(noneTips,3000);
+        }
+        function noneTips(){
+            var tip = document.getElementById('game-tips');
+            tip.innerHTML='开始！';
+            tip.style.display='none';
         }
         function beginGame(){
             mainKeys = self.setInterval(function(){
@@ -179,7 +202,7 @@
         }
         function replayMIDI(){
             gameStop();
-            setTimeout(playMIDI,3000)
+            playMIDI();
         }
     </script>
 </body>

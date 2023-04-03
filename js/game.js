@@ -32,14 +32,20 @@ function changeCanvasSize(){
     var winWidth = document.documentElement.clientWidth || document.body.clientWidth;//输出当前窗口的宽
     var winHeight = document.documentElement.clientHeight || document.body.clientHeight;//输出当前窗口的高
     var head = document.getElementById("head");
-    if(head.style.display=="none"){
-        canvasinnerheight=winHeight * 0.85;
+    if(winWidth<=600){
+        var heightPercent = 0.92;
     }
     else{
-        canvasinnerheight=(winHeight-60) * 0.85;
+        var heightPercent = 0.85;
+    }
+    if(head.style.display=="none"){
+        canvasinnerheight=winHeight * heightPercent;
+    }
+    else{
+        canvasinnerheight=(winHeight-60) * heightPercent;
     }
     canvasinnerwidth=winWidth*0.94;
-    canvasPaintWidth=winWidth*0.94*(0.8/buttonNumber);
+    canvasPaintWidth=winWidth*0.94*(0.96/buttonNumber);
     var canvas0 = document.getElementById('game-canvas-0');
     var canvas1 = document.getElementById('game-canvas-1');
     canvas0.width = canvasinnerwidth;
@@ -250,7 +256,13 @@ function changeGameHideHead(){
     }
     else if(state==1){
         head.style.display="";
-        contain.style.top="60px";
+        var maxWidth = document.body.clientWidth;
+        if(maxWidth<=600){
+            contain.style.top="40px";
+        }
+        else{
+            contain.style.top="60px";
+        }
         btn.setAttribute("state",0);
         btn_a.classList.remove("buttonSetting-active");
         btn_a_num.setAttribute("state",0);

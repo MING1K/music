@@ -87,8 +87,8 @@ function gameKeysNum(num){
 }
 /*改变琴键数量*/
 function changebuttonNum(){
-    widthPercent = 80/buttonNumber;
-    widthMarginPercent = (20/buttonNumber)*0.5;
+    widthPercent = 96/buttonNumber;
+    widthMarginPercent = (4/buttonNumber)*0.5;
     var keys = document.querySelectorAll(".piano-key");
     keys.forEach(e => {
         e.style.width = widthPercent + "%";

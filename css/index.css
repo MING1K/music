@@ -160,6 +160,107 @@ a:hover{
 .head .login .login-login .login-btn:hover a{
     color: #fff;
 }
+@media screen and (max-width:600px){
+    .head{
+        position: absolute;
+        top: 0;
+        height: 35px;
+        background: #ffffff;
+        overflow: hidden;
+        width: 100%;
+    }
+    .head .main-header{
+        height: 35px;
+        max-height: 35px;
+        width: auto;
+        overflow: hidden;
+    }
+    .head .main-header .logo .logo-img{
+        width: 100px;
+        margin: 5px 10px 0px 6px;
+    }
+    .head .main-header .main-header-choice{
+        line-height: 35px;
+        text-align: center;
+        background: #fff;
+    }
+    .head .main-header .main-header-choice .main-header-list li a{
+        float: left;
+        width: 65px;
+        font-size: 14px;
+    }
+    .head .search{
+        border: 1px solid #c9c9c9;
+        padding: 0 15px 0 15px;
+        line-height: 25px;
+        height: 25px;
+        margin-top: 5px;
+        position: relative;
+        border-radius: 3px;
+        background: transparent;
+        margin-left: 10px;
+    }
+    .head .search .search-input-input{
+        width: 120px;
+        height: 14px;
+        border: 0;
+        font-size: 12px;
+        outline: none;
+        display: none;
+    }
+    .head .search .search-input {
+        border: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 30px;
+        height: 20px;
+        background-color: #fff;
+    }
+    .head .search .search-input:hover .icon-search{
+        background: url("../img/search-icon-2.png") no-repeat;
+        background-size: 100% 100%;
+        background-color: #fff;
+        display: inline-block;
+        margin-top: 4px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+    .head .search .search-input .icon-search{
+        background: url("../img/search-icon.png") no-repeat;
+        background-size: 100% 100%;
+        background-color: #fff;
+        display: inline-block;
+        margin-top: 4px;
+        width: 16px;
+        height: 16px;
+    }
+    .head .login{
+        margin-left: 20px;
+    }
+    .head .login .login-login{
+        width: auto;
+        float: right;
+        text-align: center;
+        margin-top: 5px;
+    }
+    .head .login .login-login .login-btn{
+        border: 1px #c9c9c9 solid;
+        border-radius: 3px;
+        width: 50px;
+        height: 25px;
+    }
+    .head .login .login-login .register-btn{
+        margin-left: 5px;
+        border-radius: 3px;
+        width: 40px;
+        height: 25px;
+    }
+    .head .login .login-login a{
+        line-height: 25px;
+    }
+}
 .contain{
     width: 100%;
     position: absolute;
@@ -282,6 +383,87 @@ a:hover{
 .contain .main-piano .piano-label .setting .onSetting:hover a{
     color: #ffffff;
 }
+@media screen and (max-width:600px){
+    .contain{
+        width: 100%;
+        position: absolute;
+        top: 35px;
+        bottom: 0px;
+        height: auto;
+        overflow: hidden;
+    }
+    .contain .main-piano .piano-label{
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        height: 40px;
+    }
+    .contain .main-piano .piano-label .choose-piano{
+        display: block;
+        margin: 5px 0 5px 3%;
+        width: auto;
+        height: 100%;
+        background: #ffffff70;
+        overflow: hidden;
+    }
+    .contain .main-piano .piano-label .choose-piano .song-name{
+        width: 80px;
+        text-align: center;
+        line-height: 25px;
+        height: 25px;
+        margin-top: 6px;
+        margin-left: 10px;
+        border: 1px solid #30c478;
+    }
+    .contain .main-piano .piano-label .choose-piano .song-name .chooseLists{
+        overflow: hidden;
+        background: #ffffff;
+        text-align: center;
+        position: absolute;
+        top: 35px;
+        height: 0;
+    }
+    .contain .main-piano .piano-label .choose-piano .song-name .chooseLists li{
+        max-width: 80px;
+        line-height: 25px;
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+    .contain .main-piano .piano-label .choose-piano .control{
+        width: auto;
+        line-height: 25px;
+        margin-top: 6px;
+        margin-left: 8px;
+    }
+    .contain .main-piano .piano-label .choose-piano .control a{
+        border: 1px solid #30c478;
+        padding: 3px 5px;
+        margin: 0 5px;
+    }
+    .contain .main-piano .piano-label .setting{
+        display: block;
+        margin: 5px 3% 5px 0;
+        width: auto;
+        height: 100%;
+        background: #ffffff70;
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .contain .main-piano .piano-label .setting .onSetting{
+        width: auto;
+        text-align: center;
+        line-height: 25px;
+        margin-top: 5px;
+        float: right;
+        margin-right: 20px;
+        padding: 0 10px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+}
 .setting-list{
     width: 94%;
     margin: 10px 3% 10px 3%;
@@ -387,6 +569,76 @@ a:hover{
 }
 .setting-li .buttonSetting-active{
     border: 3px solid #30c478c7;
+}
+@media screen and (max-width:600px){
+    .setting-list .setting-lists{
+        width: 100%;
+        border-radius: 4px;
+        padding: 5px 0;
+    }
+    .setting-list .setting-lists .setting-li{
+        line-height: 35px;
+        max-height: 35px;
+        overflow: hidden;
+        margin: 0 10px;
+        padding-left: 10px;
+        font-size: 14px;
+    }
+    .setting-li:hover{
+        box-shadow: inset -2px -2px 2px 1px #f3f3f39c;
+    }
+    .setting-li a{
+        float: right;
+        line-height: 30px;
+    }
+    .setting-li a:hover{
+        color: #000;
+    }
+    .setting-li .numSetting{
+        line-height: 30px;
+        margin-right: 50px;
+    }
+    .setting-li .numSetting .left-btn{
+        float: left;
+        width: 30px;
+        height: 30px;
+    }
+    .setting-li .numSetting .right-btn{
+        float: left;
+        width: 30px;
+        height: 30px;
+    }
+    .setting-li .numSetting span{
+        width: 30px;
+        float: left;
+        text-align: center;
+    }
+    .setting-li .buttonSetting{
+        margin-right: 70px;
+        height: 25px;
+        margin-top: 1px;
+        width: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.788);
+        border-radius: 15px;
+    }
+    .setting-li .buttonSetting .setting-btn{
+        height: 15px;
+        border: 3px solid  rgba(255, 255, 255, 0.788);
+        background:  rgba(255, 255, 255, 0.788);
+        width: 15px;
+        margin-top: 2px;
+        margin-left: 3px;
+        border-radius: 15px;
+    }
+    .setting-li .buttonSetting .setting-btn-active{
+        margin-right: 3px;
+        float: right;
+        border: 3px solid #30c478c7;
+        background:  #30c478c7;
+    }
+    .setting-li .buttonSetting-active{
+        border: 3px solid #30c478c7;
+    }
 }
 .contain .main-piano .piano-contain{
     position: relative;
@@ -545,6 +797,7 @@ a:hover{
 }
 
 /*game.html*/
+
 .game-back-canvas{
     position: absolute;
     top: 0;
@@ -662,6 +915,62 @@ a:hover{
     cursor: pointer;
     color: #ffffff;
 }
+@media screen and (max-width:600px){
+    .main-piano-game .choice{
+        position: absolute;
+        width: 94%;
+        margin: 5px 3%;
+        line-height: 40px;
+        height: auto;
+        box-shadow: 0 0 10px rgb(0 0 0 / 27%);
+        background: #8d8c8c13;
+    }
+    .main-piano-game .choice .song-choice{
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 10px;
+        border: 1px solid #9c9c9c;
+    }
+    .main-piano-game .choice .song-choice .song-choice-lists{
+        width: 100px;
+        background: #ffffff;
+        height: 0;
+        overflow: hidden;
+        line-height: 25px;
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+    .main-piano-game .choice .game-choice{
+        width: auto;
+        min-width: auto;
+        text-align: left;
+        margin-left: 10px;
+        display: block;
+    }
+    .main-piano-game .choice .game-choice a{
+        padding: 5px 5px 5px 5px;
+        margin: 0 5px;
+        max-width: 60px;
+        border: 1px solid #9c9c9c;
+    }
+    .main-piano-game .choice .setting-btn{
+        width: 100px;
+        text-align: right;
+        margin-right: 20px;
+        display: inline;
+    }
+    .main-piano-game .choice .setting-btn a{
+        padding: 5px 10px 5px 10px;
+        margin: 0 10px;
+        max-width: 60px;
+        border: 1px solid #9c9c9c;
+    }
+}
 .main-piano-game .game-setting{
     position: absolute;
     top: 60px;
@@ -716,8 +1025,8 @@ a:hover{
     z-index: 5;
 }
 .main-piano-game .main-piano .game-piano .game-keys .piano-key{
-    width: 20%;
-    margin: 0% 2.5% 1% 2.5%;
+    width: 24%;
+    margin: 0% .5% 1% .5%;
     padding: 1% 2%;
     height: 80%;
     float: left;
@@ -741,4 +1050,83 @@ a:hover{
     box-shadow: inset 0 0 20px 5px #3eb3fcc7;
     border: 1px solid #87cefa;
     background: #81ffeec0;
+}
+@media screen and (max-width:600px){
+    .main-piano-game .main-piano .game-canvas{
+        position: absolute;
+        width: 100%;
+        height: 92%;
+        top: 0;
+        overflow: hidden;
+    }
+    .main-piano-game .main-piano .game-piano{
+        position: absolute;
+        bottom: .5%;
+        width: 100%;
+        height: 8%;
+    }
+}
+.game-state{
+    position: absolute;
+    top: 45%;
+    left: 25%;
+    width: 50%;
+    height: auto;
+    text-align: center;
+    z-index: 11;
+    pointer-events: none;
+}
+.game-state .game-tips{
+    width: auto;
+    padding: 8px 10px;
+    background-color: #9c9c9c1c;
+    border-radius: 5px;
+    pointer-events: auto;
+}
+.game-state .game-tips:hover{
+    background-color: #9c9c9c6e;
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s; /* Firefox 4 */
+    -webkit-transition-duration: 0.5s; /* Safari 和 Chrome */
+    -o-transition-duration: 0.5s; /* Opera */
+    transition-property: all;
+    -moz-transition-property: all; /* Firefox 4 */
+    -webkit-transition-property: all; /* Safari and Chrome */
+    -o-transition-property: all; /* Opera */
+}
+.game-score{
+    position: absolute;
+    top: 10.5%;
+    left: 50%;
+    width: 20%;
+    height: auto;
+    text-align: center;
+    z-index: 20;
+    pointer-events: none;
+}
+.game-score .tips-text{
+    width: auto;
+    padding: 8px 10px;
+    background-color: #9c9c9c1c;
+    border-radius: 5px;
+    pointer-events: auto;
+}
+@media screen and (max-width:600px){
+    .game-score{
+        position: absolute;
+        top: 11%;
+        left: 25%;
+        width: 50%;
+        height: auto;
+        text-align: center;
+        z-index: 20;
+        pointer-events: none;
+    }
+    .game-score .tips-text{
+        width: auto;
+        padding: 8px 10px;
+        background-color: #9c9c9c1c;
+        border-radius: 5px;
+        pointer-events: auto;
+    }
 }

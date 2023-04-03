@@ -28,6 +28,7 @@ var keyCodeThird = [90,88,67,86,66,78,77,]//字母键：ZXCVBNM
 var sizeNumber = [52,49,42,35,28,21,14]
 var canvasinnerheigt = 0;//canvas高
 var keyBoardChooseNum=[1,21,42,61];
+var maxNum = 5;//键盘可放大次数
 
 window.addEventListener('load',function(){
     createBackground();//背景
@@ -114,7 +115,13 @@ function buildAudio(){
 function changeSize(){
     /*获得controlNum初始值*/
     createBackground();//背景
-    var controlNum = 1;//初始值为1
+    var maxWidth = document.body.clientWidth;
+    if(maxWidth<=600){
+        var controlNum = 7;//初始值为7
+    }
+    else{
+        var controlNum = 1;
+    }
     var board_size = document.getElementById("board-size");
     if(board_size){
         controlNum = board_size.getAttribute("state");
@@ -136,7 +143,11 @@ const debounce = (fn, delay) => {
 const cancalDebounce = debounce(changeSize, 300);
 function chooseSize(num){
     /*键盘调整为适合的大小*/
-    if(num>6 || num<0){num=1;}//数字1-5，1为全键键盘
+    var maxWidth = document.body.clientWidth;
+    if(maxWidth<=600){
+        maxNum = 7;
+    }
+    if(num>maxNum || num<0){num=1;}//数字1-maxNum，1为全键键盘
     var keysContain = document.getElementById("piano-keys");
     var maxWidth = document.body.clientWidth;
     var wantWidth = 40*sizeNumber[num-1];
@@ -145,12 +156,23 @@ function chooseSize(num){
     let translateXsize = (52 - sizeNumber[num-1]) * 40 * 0.5;
     var canvasHeight = document.querySelectorAll(".canvas-card");
     var aheight = Math.round(700*(1-size/3))-20;
-    canvasinnerheight = aheight;
-    canvasHeight.forEach(e => {
-        e.height=aheight;
-    });
     var canvasContainHeight = document.getElementById("canvas-contain");
-    canvasContainHeight.style.height = aheight+"px";
+    if(maxWidth<=600){
+        aheight = aheight - 40;
+        canvasContainHeight.style.height = aheight+"px";
+        canvasinnerheight = aheight;
+        canvasHeight.forEach(e => {
+            e.height=aheight;
+        });
+    }
+    else{
+        aheight = aheight - 10;
+        canvasContainHeight.style.height = aheight+"px";
+        canvasinnerheight = aheight;
+        canvasHeight.forEach(e => {
+            e.height=aheight;
+        });
+    }
     keysContain.style.transform = "scale("+size+") translateX(-"+translateXsize+"px)";
     canvasContainHeight.style.transform = "scaleX("+size+") translateX(-"+translateXsize+"px)";
 }
@@ -425,7 +447,13 @@ function changeHideHead(){
     }
     else if(state==1){
         head.style.display="block";
-        contain.style.top="60px";
+        var maxWidth = document.body.clientWidth;
+        if(maxWidth<=600){
+            contain.style.top="40px";
+        }
+        else{
+            contain.style.top="60px";
+        }
         btn.setAttribute("state",0);
         btn_a.classList.remove("buttonSetting-active");
         btn_a_num.setAttribute("state",0);
@@ -434,36 +462,45 @@ function changeHideHead(){
 }
 /*控制键盘大小*/
 function changeSizeControl(){
+    var maxWidth = document.body.clientWidth;
+    if(maxWidth<=600){
+        var controlNum = 7;//初始值为7
+    }
+    else{
+        var controlNum = 1;
+    }
+    changeSizeText(controlNum);
     var left_btn = document.getElementById("board-size-left-btn");
     var right_btn = document.getElementById("board-size-right-btn");
     left_btn.onclick=function(){
         var board_size = document.getElementById("board-size");
         var setControlNum = board_size.getAttribute("state");
-        var board_size_num = document.getElementById("board-size-num");
         if(setControlNum<=1){
             return;
         }
         else{
             setControlNum--;
-            board_size_num.innerHTML=setControlNum;
-            board_size.setAttribute("state",setControlNum);
-            chooseSize(setControlNum);
+            changeSizeText(setControlNum);
         }
     }
     right_btn.onclick=function(){
         var board_size = document.getElementById("board-size");
         var setControlNum = board_size.getAttribute("state");
-        var board_size_num = document.getElementById("board-size-num");
-        if(setControlNum>=5){
+        if(setControlNum>=maxNum){
             return;
         }
         else{
             setControlNum++;
-            board_size_num.innerHTML=setControlNum;
-            board_size.setAttribute("state",setControlNum);
-            chooseSize(setControlNum);
+            changeSizeText(setControlNum);
         }
     }
+}
+function changeSizeText(setControlNum){
+    var board_size = document.getElementById("board-size");
+    var board_size_num = document.getElementById("board-size-num");
+    board_size_num.innerHTML=setControlNum;
+    board_size.setAttribute("state",setControlNum);
+    chooseSize(setControlNum);
 }
 /*控制键盘弹奏提示显示*/
 function changeTips(){
